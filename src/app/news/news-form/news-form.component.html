@@ -1,0 +1,30 @@
+<h5>{{ title }}</h5>
+<div class="row">
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="save()">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="titulo" type="text"
+               [(ngModel)]="news.title" formControlName="titulo">
+        <label for="titulo"
+               [class.active]="news.title">
+          Titulo
+        </label>
+      </div>
+
+      <div class="input-field col s12">
+        <i class="material-icons prefix">comment</i>
+        <input id="conteudo" type="text"
+               [(ngModel)]="news.description" formControlName="conteudo">
+        <label for="conteudo"
+               [class.active]="news.description">
+          Conteúdo
+        </label>
+      </div>
+
+    </div>
+    <button class="btn waves-effect waves-light" type="submit">
+      Submit<i class="material-icons right">send</i>
+    </button>
+  </form>
+</div>
