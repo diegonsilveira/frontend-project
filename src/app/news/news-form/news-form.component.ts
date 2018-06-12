@@ -33,11 +33,12 @@ export class NewsFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    var id = this.route.params.subscribe(params => {
-      var id = params['_id'];
+    this.route.params.subscribe(params => {
+      var id = params['id'];
 
       this.title = id ? 'Alterar notícia' : 'Incluir notícia';
 
+      debugger;
       if (!id)
         return;
 
@@ -49,6 +50,7 @@ export class NewsFormComponent implements OnInit {
               this.router.navigate(['NotFound']);
             }
           });
+        debugger;
     });
   }
 

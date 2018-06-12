@@ -19,8 +19,8 @@ import { TeachersModule } from "./teachers/teachers.module";
 import { newsRouting } from "./news/news.routing";
 import { NewsModule } from "./news/news.module";
 
-//import { coursesRouting } from "./courses/courses.routing";
-//import { CoursesModule } from "./courses/courses.module";
+import { courseRouting } from "./course/course.routing";
+import { CourseModule } from "./course/course.module";
 
 @NgModule({
   declarations: [
@@ -37,11 +37,11 @@ import { NewsModule } from "./news/news.module";
     StudentsModule,
     TeachersModule,
     NewsModule,
-    //CoursesModule,
+    CourseModule,
     teachersRouting,
     studentsRouting,
     newsRouting,
-    //coursesRouting,
+    courseRouting,
     routing
   ],
   providers: [],

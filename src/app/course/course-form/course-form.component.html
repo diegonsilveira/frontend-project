@@ -4,20 +4,20 @@
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">account_circle</i>
-        <input id="title" type="text"
-               [(ngModel)]="news.title">
-        <label for="title"
-               [class.active]="news.title">
-          Titulo
+        <input id="nome" type="text"
+               [(ngModel)]="course.nome" formControlName="nome">
+        <label for="nome"
+               [class.active]="course.nome">
+          Professor
         </label>
       </div>
 
       <div class="input-field col s12">
-        <i class="material-icons prefix">comment</i>
-        <input id="description" type="text"
-               [(ngModel)]="news.description">
-        <label for="description"
-               [class.active]="news.description">
+        <i class="material-icons prefix">description</i>
+        <input id="disciplina" type="text"
+               [(ngModel)]="course.disciplina" formControlName="disciplina">
+        <label for="disciplina"
+               [class.active]="course.disciplina">
           Conteúdo
         </label>
       </div>

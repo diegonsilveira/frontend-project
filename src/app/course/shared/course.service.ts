@@ -7,39 +7,38 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
 @Injectable()
-export class NewsService {
+export class CourseService {
 
-  //private url: string = "http://demo4401129.mockable.io/news";
-  private url: string = "http://127.0.0.1:3000/noticias";
+  private url: string = "http://demo4401129.mockable.io/Course";
 
   constructor(private http: Http) { }
 
-  getNews(){
+  getCourse(){
     return this.http.get(this.url)
       .map(res => res.json());
   }
 
-  getOnlyOneNews(id){
-    return this.http.get(this.getNewsUrl(id))
+  getTeacher(id){
+    return this.http.get(this.getCourseUrl(id))
       .map(res => res.json());
   }
 
-  addNews(news){
-    return this.http.post(this.url, JSON.stringify(news))
+  addCourse(t){
+    return this.http.post(this.url, JSON.stringify(t))
       .map(res => res.json());
   }
 
-  updateNews(news){
-    return this.http.put(this.getNewsUrl(news.id), JSON.stringify(news))
+  updateCourse(t){
+    return this.http.put(this.getCourseUrl(t.id), JSON.stringify(t))
       .map(res => res.json());
   }
 
-  deleteNews(id){
-    return this.http.delete(this.getNewsUrl(id))
+  deleteCourse(id){
+    return this.http.delete(this.getCourseUrl(id))
       .map(res => res.json());
   }
 
-  private getNewsUrl(id){
+  private getCourseUrl(id){
     return this.url + "/" + id;
   }
 }
