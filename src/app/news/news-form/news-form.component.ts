@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -7,15 +7,15 @@ import { NewsService } from '../shared/news.service';
 import { BasicValidators } from '../../shared/basic-validators';
 
 @Component({
-  selector: 'app-student-form',
+  selector: 'app-news-form',
   templateUrl: './news-form.component.html',
   styleUrls: ['./news-form.component.css']
 })
 export class NewsFormComponent implements OnInit {
 
   form: FormGroup;
-  title: string;
-  news: News = new News();
+  titulo: string;
+  news;
 
   constructor(
     formBuilder: FormBuilder,
@@ -24,46 +24,47 @@ export class NewsFormComponent implements OnInit {
     private newsService: NewsService
   ) {
     this.form = formBuilder.group({
-      title: ['', [
+      titulo: ['', [
         Validators.required,
         Validators.minLength(3)
       ]],
-      description:['', []]
+      conteudo:['', []]
     });
   }
 
   ngOnInit() {
+
+    var self = this;
+
+    //this.news = {};
+    //this.news['titulo'] = 'titulo';
+    //this.news['conteudo'] = 'conteudo';
+
     this.route.params.subscribe(params => {
       var id = params['id'];
 
-      this.title = id ? 'Alterar notícia' : 'Incluir notícia';
+      this.titulo = id ? 'Alterar notícia' : 'Incluir notícia';
 
       debugger;
       if (!id)
         return;
 
-      this.newsService.getOnlyOneNews(id)
-        .subscribe(
-          news => this.news = news,
-          response => {
-            if (response.status == 404) {
-              this.router.navigate(['NotFound']);
-            }
-          });
-        debugger;
+      this.newsService.getOnlyOneNews(id).subscribe((news) =>{
+        self.news = news;
+      });
     });
   }
 
   save() {
-    var result,
-    newsValue = this.form.value;
+      var result,
+      newsValue = this.news;
 
-    if (newsValue.id){
-      result = this.newsService.updateNews(newsValue);
-    } else {
-      result = this.newsService.addNews(newsValue);
-    }
+      if (newsValue.id){
+        result = this.newsService.updateNews(newsValue);
+      } else {
+        result = this.newsService.addNews(newsValue);
+      }
 
-    result.subscribe(data => this.router.navigate(['news']));
+      result.subscribe(data => this.router.navigate(['news']));
   }
 }
