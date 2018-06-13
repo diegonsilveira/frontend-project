@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Rx';
 export class NewsService {
 
   //private url: string = "http://demo4401129.mockable.io/news";
-  private url: string = "http://127.0.0.1:3000/noticias";
+  private url: string = "/noticias";
 
   constructor(private http: Http) { }
 
