@@ -1,10 +1,10 @@
 <h5>{{ title }}</h5>
 <div class="row">
-  <!--form materialize class="col s12" (ngSubmit)="save()"-->
+  <form materialize name="f" class="col s12" (ngSubmit)="save()">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">account_circle</i>
-        <input id="titulo" type="text" [(ngModel)]="news.titulo">
+        <input id="titulo" name="titulo" type="text" [(ngModel)]="news.titulo">
         <label for="title"
                [class.active]="news.titulo">
           Titulo
@@ -13,7 +13,7 @@
 
       <div class="input-field col s12">
         <i class="material-icons prefix">comment</i>
-        <input id="conteudo" type="text"
+        <input id="conteudo" name="conteudo" type="text"
                [(ngModel)]="news.conteudo">
         <label for="description"
                [class.active]="news.conteudo">
@@ -22,8 +22,8 @@
       </div>
 
     </div>
-    <button class="btn waves-effect waves-light" type="submit" (click)="save()">
+    <button name="btSave" class="btn waves-effect waves-light" type="submit">
       Submit<i class="material-icons right">send</i>
     </button>
-  <!--/form-->
+  </form>
 </div>

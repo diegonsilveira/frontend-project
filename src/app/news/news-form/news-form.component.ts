@@ -45,12 +45,14 @@ export class NewsFormComponent implements OnInit {
 
       this.titulo = id ? 'Alterar notícia' : 'Incluir notícia';
 
-      debugger;
-      if (!id)
+      if (!id) {
+        this.news = new News;
+        debugger;
         return;
+      }
 
       this.newsService.getOnlyOneNews(id).subscribe((news) =>{
-        self.news = news;
+        this.news = news;
       });
     });
   }
