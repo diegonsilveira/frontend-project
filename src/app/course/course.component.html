@@ -1,21 +1,16 @@
-<p>
-  TOTAL: {{ course.length }}
-</p>
-
 <table>
   <thead>
   <tr>
     <th data-field="name">Curso</th>
-    <th data-field="name">Professores</th>
     <th data-field="name">Editar</th>
     <th data-field="name">Excluir</th>
   </tr>
   </thead>
 
+
   <tbody>
     <tr *ngFor="let n of course">
       <td>{{ n.nome }}</td>
-      <td>{{ n.professores }}</td>
       <td>
         <a [routerLink]="['/course', n.id]">
           <i class="material-icons">mode_edit</i>
@@ -29,6 +24,8 @@
     </tr>
   </tbody>
 </table>
+
+
 
 <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
   <a class="btn-floating btn-large waves-effect waves-light green"

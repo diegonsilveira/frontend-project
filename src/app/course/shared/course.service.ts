@@ -9,7 +9,8 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class CourseService {
 
-  private url: string = "http://demo4401129.mockable.io/Course";
+  //private url: string = "http://demo4401129.mockable.io/Course";
+  private url: string = "/cursos";
 
   constructor(private http: Http) { }
 
@@ -18,7 +19,7 @@ export class CourseService {
       .map(res => res.json());
   }
 
-  getTeacher(id){
+  getOnlyOneCourse(id){
     return this.http.get(this.getCourseUrl(id))
       .map(res => res.json());
   }
