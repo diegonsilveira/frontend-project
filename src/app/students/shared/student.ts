@@ -4,4 +4,5 @@ export class Student {
   curso: string;
   notas: string;
   faltas: number;
+  selecionado: boolean;
 }

@@ -3,4 +3,5 @@ export class Teachers {
   nome: string;
   curso: string;
   disciplina: string;
+  selecionado: boolean;
 }
