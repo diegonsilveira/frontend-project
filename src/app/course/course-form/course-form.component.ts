@@ -30,6 +30,9 @@ export class CourseFormComponent implements OnInit {
         nome:  ['', []],
         curso:  ['', []],
         disciplina:  ['', []]
+      }),
+      alunos: formBuilder.group({
+        nome:  ['', []]
       })
     });
   }
@@ -45,10 +48,9 @@ export class CourseFormComponent implements OnInit {
 
       if (!id) {
         this.course = new Course;
-        debugger;
         return;
       }
-      debugger;
+
       this.courseService.getOnlyOneCourse(id).subscribe((course) =>{
         this.course = course;
       });

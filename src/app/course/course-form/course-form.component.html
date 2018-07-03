@@ -1,6 +1,6 @@
 <h5>{{ title }}</h5>
 <div class="row">
-  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="save()">
+  <form materialize name="f" id="f" class="col s12" (ngSubmit)="save()" action="#">
     <div class="row">
       <div class="input-field col s12">
         <i class="material-icons prefix">account_circle</i>
@@ -10,9 +10,65 @@
           Nome
         </label>
       </div>
-
-
     </div>
+    <br>
+    <table class="table">
+      <caption>
+        <h5>Professores</h5>
+      </caption>
+      <thead>
+      <tr>
+        <th data-field="select">Selecionar</th>
+        <th data-field="nome">Professor</th>
+        <th data-field="disciplina">Disciplina</th>
+      </tr>
+      </thead>
+
+
+      <tbody>
+        <tr *ngFor="let n of course.professor">
+          <td>
+            <div class="form-check">
+                <input name="{{n.id}}" type="checkbox" class="form-check-input" id="{{n.id}}" [(checked)]="n.selecionado" >
+                <label class="form-check-label" for="{{n.id}}"></label>
+            </div>
+          </td>
+          <td>{{ n.nome }}</td>
+          <td>{{ n.disciplina }} </td>
+          <td>{{ n.selecionado }} </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <br>
+    <table class="table">
+      <caption>
+          <h5>Alunos</h5>
+      </caption>
+      <thead>
+        <tr>
+          <th data-field="select">Selecionar</th>
+          <th data-field="alunos">Nome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let n of course.alunos">
+          <td>
+              <div class="form-check">
+                  <input name="{{n.nome}}" type="checkbox" class="form-check-input" id="{{n.nome}}" [(checked)]="n.selecionado" >
+                  <label class="form-check-label" for="{{n.nome}}"></label>
+              </div>
+          </td>
+          <td>
+            <div class="row">
+              <div class="col-md-8">{{ n.nome }}</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
     <button class="btn waves-effect waves-light" type="submit">
       Submit
       <i class="material-icons right">send</i>
